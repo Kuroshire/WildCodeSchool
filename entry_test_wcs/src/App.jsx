@@ -1,7 +1,23 @@
 import { useState } from 'react'
 import './App.css'
+import {NewMemberForm, MemberList} from './Components'
+
+//didn't installed bootstrap yet, but i probably will
 
 function App() {
+
+  const members = [
+    {
+      name : "Eleftheria",
+    }, 
+    {
+      name : "Gennadios",
+      age : 29,
+    }, 
+    {
+      name : "Lysimachos",
+    }
+  ]
 
   return (
     <div className="App">
@@ -14,23 +30,14 @@ function App() {
 
       <main>
         
-        <h2>Ajouter un(e) Argonaute</h2>
-        <form class="new-member-form">
-          <label for="name">Nom de l&apos;Argonaute</label>
-          <input id="name" name="name" type="text" placeholder="Charalampos" />
-          <button type="submit">Envoyer</button>
-        </form>
+        <NewMemberForm></NewMemberForm>
         
-        <h2>Membres de l'équipage</h2>
-        <section class="member-list">
-          <div class="member-item">Eleftheria</div>
-          <div class="member-item">Gennadios</div>
-          <div class="member-item">Lysimachos</div>
-        </section>
+        <MemberList members={members}></MemberList>
       </main>
 
       <footer>
         <p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
+        <h6>mais bon il a rien fait en vrai il a juste gratter pour la note...</h6>
       </footer>
     </div>
   )
