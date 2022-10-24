@@ -6,6 +6,7 @@ const PORT = process.env.PORT;
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+//const path = require('path');
 
 //import routes
 const authRoute = require('./Routes/auth.cjs');
@@ -18,44 +19,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
-//API
-/*
-app.get('/api/member', (req, res) => {
-    res.status(200).send({
-        name: 'greg',
-        age: 29
-    })
-});
-
-app.post('/api/member/:id', (req, res) => {
-    const id = req.params;
-    const name = req.body.name;
-
-    if(!name){
-        res.status(418).send({message: 'Name is missing.'});
-    }
-
-    const age = req.body.age;
-
-    res.send({
-        member: `name is ${name}, ${age} years old.`
-    })
-});
-
-app.post('/api/newmember', (req, res) => {
-    if(!req.body.name){
-        return res.status(400).json({error: "No name provided"});
-    }
-    
-    return res.json({
-        name: req.body.name
-    });
-
-});*/
-
 //connect
 
 app.use("/api/auth", authRoute);
+/*
+app.use(express.static(path.resolve(__dirname, './client/build')));
+
+app.get("*")*/
 
 mongoose
     .connect(process.env.MONGO_URI)

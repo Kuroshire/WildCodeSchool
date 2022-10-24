@@ -38,6 +38,18 @@ label {
   text-align: center;
 }
 
+.member-form-error {
+  color: #f76c6c;
+}
+
+.member-list {
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
 .member-item {
   padding: 0.25em 0;
 }

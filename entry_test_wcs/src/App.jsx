@@ -4,27 +4,19 @@ import './App.css'
 import {NewMemberForm, MemberList} from './Components'
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: `http://localhost:8000/api/auth`
-})
-
-//didn't installed bootstrap yet, but i probably will
+//didn't installed bootstrap yet, but i probably will -> guess i didnt lol
 
 function App() {
 
   const [members, setMembers] = useState([]);
+  const addedMember = () => {console.log("update")};
 
   useEffect(() => {
-    console.log("use effect called");
-    //data = list of twats from current user
     axios.get("http://localhost:8000/api/auth/members")
       .then((response) => {
-        //console.log("Data : " + response.data);
         setMembers(response.data);
       });
-    }, []);
-
-  //console.log(`Members : ${members}`);
+    }, [addedMember]);
 
   return (
     <div className="App">
@@ -37,14 +29,13 @@ function App() {
 
       <main>
         
-        <NewMemberForm></NewMemberForm>
+        <NewMemberForm addedMember={addedMember}></NewMemberForm>
         
         <MemberList members={members}></MemberList>
       </main>
 
       <footer>
         <p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
-        <h6>mais bon il a rien fait en vrai il a juste gratter pour la note...</h6>
       </footer>
     </div>
   )
