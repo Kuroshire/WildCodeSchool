@@ -1,23 +1,30 @@
-import { useState } from 'react'
+//import { response } from 'express'
+import { useEffect, useState } from 'react'
 import './App.css'
 import {NewMemberForm, MemberList} from './Components'
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: `http://localhost:8000/api/auth`
+})
 
 //didn't installed bootstrap yet, but i probably will
 
 function App() {
 
-  const members = [
-    {
-      name : "Eleftheria",
-    }, 
-    {
-      name : "Gennadios",
-      age : 29,
-    }, 
-    {
-      name : "Lysimachos",
-    }
-  ]
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    console.log("use effect called");
+    //data = list of twats from current user
+    axios.get("http://localhost:8000/api/auth/members")
+      .then((response) => {
+        //console.log("Data : " + response.data);
+        setMembers(response.data);
+      });
+    }, []);
+
+  //console.log(`Members : ${members}`);
 
   return (
     <div className="App">

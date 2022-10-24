@@ -3,12 +3,13 @@ import MemberItem from './MemberItem'
 
 //props : member[] members, 
 export default function MemberList(props) {
-  return (
-    <div class="member-list">
+
+	return (
+		<div className="member-list">
 
 			<h2>Membres de l'équipage</h2>
 
-			<section class="member-list">
+			<section className="member-list">
 				{props.members.map( 
 					(member) => (
 						<MemberItem name={member.name}/>
@@ -16,6 +17,6 @@ export default function MemberList(props) {
 				}
 			</section>
 
-    </div>
-  )
+		</div>
+	)
 }
